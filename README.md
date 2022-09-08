@@ -1,1 +1,1 @@
-# \Gaditek Trial Task
+# Gaditek Trial Task
