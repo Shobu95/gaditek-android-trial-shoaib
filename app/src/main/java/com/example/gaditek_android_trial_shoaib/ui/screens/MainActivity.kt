@@ -1,4 +1,4 @@
-package com.example.gaditek_android_trial_shoaib
+package com.example.gaditek_android_trial_shoaib.ui.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
