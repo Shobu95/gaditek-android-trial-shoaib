@@ -5,12 +5,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.gaditek_android_trial_shoaib.ui.screens.SocialChannelViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
 @ExperimentalPagerApi
 @Composable
-fun TabLayout() {
+fun TabLayout(viewModel: SocialChannelViewModel) {
 
     val pagerState = rememberPagerState()
 
@@ -18,6 +19,6 @@ fun TabLayout() {
         modifier = Modifier.background(color = Color.White)
     ) {
         TabBar(pagerState)
-        TabViewPager(pagerState)
+        TabViewPager(pagerState, viewModel.state.socialsList, viewModel.state.channelsList)
     }
 }

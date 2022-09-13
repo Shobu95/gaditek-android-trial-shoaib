@@ -1,20 +1,30 @@
 package com.example.gaditek_android_trial_shoaib.ui.screens.components.tabs
 
 import androidx.compose.runtime.Composable
+import com.example.gaditek_android_trial_shoaib.domain.model.SocialChannelModel
+import com.example.gaditek_android_trial_shoaib.ui.screens.components.list.SocialChannelList
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 
 @ExperimentalPagerApi
 @Composable
-fun TabViewPager(pagerState: PagerState) {
+fun TabViewPager(
+    pagerState: PagerState,
+    socialsList: List<SocialChannelModel>,
+    channelsList: List<SocialChannelModel>
+) {
     HorizontalPager(
         state = pagerState,
         count = 2
     ) { page ->
         when (page) {
-//            0 -> SocialChannelList()
-//            1 -> SocialChannelList()
+            0 -> {
+                SocialChannelList(channelsList) {}
+            }
+            1 -> {
+                SocialChannelList(socialsList) {}
+            }
         }
     }
 }
