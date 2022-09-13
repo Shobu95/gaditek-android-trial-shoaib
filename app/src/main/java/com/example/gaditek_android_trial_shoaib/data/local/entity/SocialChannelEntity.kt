@@ -10,6 +10,7 @@ data class SocialChannelEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     var name: String,
+    var url: String,
     var iconUrl: String,
     var packageName: String,
     var type: AppType
@@ -20,6 +21,7 @@ fun List<SocialChannelEntity>.asDomainModel(): List<SocialChannelModel> {
         SocialChannelModel(
             id = it.id,
             name = it.name,
+            url = it.url,
             iconUrl = it.iconUrl,
             packageName = it.packageName,
             type = it.type
