@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import com.example.gaditek_android_trial_shoaib.ui.screens.components.error_view.ErrorView
 import com.example.gaditek_android_trial_shoaib.ui.screens.components.tabs.TabLayout
 import com.example.gaditek_android_trial_shoaib.ui.screens.state_events.SocialChannelEvent
-import com.example.gaditek_android_trial_shoaib.ui.theme.GaditekandroidtrialshoaibTheme
+import com.example.gaditek_android_trial_shoaib.ui.theme.TrialAppTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            GaditekandroidtrialshoaibTheme {
+            TrialAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),

@@ -5,7 +5,6 @@ import com.example.gaditek_android_trial_shoaib.data.local.entity.asDomainModel
 import com.example.gaditek_android_trial_shoaib.data.remote.client.SocialChannelService
 import com.example.gaditek_android_trial_shoaib.data.remote.dto.channelsAsDatabaseModel
 import com.example.gaditek_android_trial_shoaib.data.remote.dto.socialsAsDatabaseModel
-import com.example.gaditek_android_trial_shoaib.domain.enums.AppType
 import com.example.gaditek_android_trial_shoaib.domain.model.SocialChannelModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -19,8 +18,8 @@ class SocialChannelRepositoryImpl
     private val service: SocialChannelService
 ) : SocialChannelRepository {
 
-    override fun getSocialChannels(type: AppType): Flow<List<SocialChannelModel>> {
-        return dao.getSocialChannels(type).map {
+    override fun getSocialChannels(): Flow<List<SocialChannelModel>> {
+        return dao.getSocialChannels().map {
             it.asDomainModel()
         }
     }

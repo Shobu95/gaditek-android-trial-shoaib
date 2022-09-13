@@ -28,7 +28,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun GaditekandroidtrialshoaibTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun TrialAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
@@ -36,9 +36,9 @@ fun GaditekandroidtrialshoaibTheme(darkTheme: Boolean = isSystemInDarkTheme(), c
     }
 
     MaterialTheme(
-            colors = colors,
-            typography = Typography,
-            shapes = Shapes,
+        colors = colors,
+        typography = Typography,
+        shapes = Shapes,
             content = content
     )
 }

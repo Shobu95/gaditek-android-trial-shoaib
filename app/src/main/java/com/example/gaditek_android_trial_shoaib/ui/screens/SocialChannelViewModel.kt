@@ -29,12 +29,12 @@ class SocialChannelViewModel
     var state by mutableStateOf(SocialChannelState())
         private set
 
-    var getChannelsJob: Job? = null
-    var getSocialsJob: Job? = null
+
+    var getDataJob: Job? = null
 
     init {
-        getChannels()
-        getSocials()
+
+        getData()
         refreshData()
     }
 
@@ -51,33 +51,17 @@ class SocialChannelViewModel
         }
     }
 
-    private fun getSocials() {
-        getSocialsJob?.cancel()
-        getSocialsJob = repository.getSocialChannels(AppType.SOCIAL).onEach { socials ->
+    private fun getData() {
+        getDataJob?.cancel()
+        getDataJob = repository.getSocialChannels().onEach { allList ->
             state = state.copy(
-                socialsList = socials,
+                socialsList = allList.filter { it.type == AppType.SOCIAL },
+                channelsList = allList.filter { it.type == AppType.CHANNEL },
                 isLoading = false,
                 hasError = false,
                 hasData = true
             )
-            if (socials.isEmpty()) {
-                state = state.copy(
-                    hasData = false
-                )
-            }
-        }.launchIn(viewModelScope)
-    }
-
-    private fun getChannels() {
-        getChannelsJob?.cancel()
-        getChannelsJob = repository.getSocialChannels(AppType.CHANNEL).onEach { channels ->
-            state = state.copy(
-                channelsList = channels,
-                isLoading = false,
-                hasError = false,
-                hasData = true
-            )
-            if (channels.isEmpty()) {
+            if (allList.isEmpty()) {
                 state = state.copy(
                     hasData = false
                 )
@@ -100,6 +84,11 @@ class SocialChannelViewModel
                 )
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        getDataJob?.cancel()
     }
 
 }
