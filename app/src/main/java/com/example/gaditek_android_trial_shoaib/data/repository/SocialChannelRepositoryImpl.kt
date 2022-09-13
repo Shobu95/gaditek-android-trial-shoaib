@@ -19,14 +19,8 @@ class SocialChannelRepositoryImpl
     private val service: SocialChannelService
 ) : SocialChannelRepository {
 
-    override fun getSocials(): Flow<List<SocialChannelModel>> {
-        return dao.getSocialChannels(AppType.SOCIAL).map {
-            it.asDomainModel()
-        }
-    }
-
-    override fun getChannels(): Flow<List<SocialChannelModel>> {
-        return dao.getSocialChannels(AppType.CHANNEL).map {
+    override fun getSocialChannels(type: AppType): Flow<List<SocialChannelModel>> {
+        return dao.getSocialChannels(type).map {
             it.asDomainModel()
         }
     }
