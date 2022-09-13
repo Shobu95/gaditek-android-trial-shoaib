@@ -12,14 +12,20 @@ class SocialChannelUseCase(@ApplicationContext val context: Context) {
 
     operator fun invoke(socialChannel: SocialChannelModel) {
 
-        val pm: PackageManager = context.packageManager
-        val intent: Intent? = pm.getLaunchIntentForPackage(socialChannel.packageName)
-        intent?.let {
-            context.startActivity(intent)
-            return
+        try {
+            val pm: PackageManager = context.packageManager
+            val intent: Intent? = pm.getLaunchIntentForPackage(socialChannel.packageName)
+            intent?.let {
+                context.startActivity(intent)
+                return
+            }
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(socialChannel.url))
+            browserIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            context.startActivity(browserIntent)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(socialChannel.url))
-        context.startActivity(browserIntent)
+
 
     }
 }

@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.gaditek_android_trial_shoaib.ui.screens.SocialChannelViewModel
+import com.example.gaditek_android_trial_shoaib.ui.screens.state_events.SocialChannelEvent
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
@@ -19,6 +20,12 @@ fun TabLayout(viewModel: SocialChannelViewModel) {
         modifier = Modifier.background(color = Color.White)
     ) {
         TabBar(pagerState)
-        TabViewPager(pagerState, viewModel.state.socialsList, viewModel.state.channelsList)
+        TabViewPager(
+            pagerState,
+            viewModel.state.socialsList,
+            viewModel.state.channelsList
+        ) { socialChannelModel ->
+            viewModel.onEvent(SocialChannelEvent.onItemClicked(socialChannelModel))
+        }
     }
 }

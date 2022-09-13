@@ -12,7 +12,8 @@ import com.google.accompanist.pager.PagerState
 fun TabViewPager(
     pagerState: PagerState,
     socialsList: List<SocialChannelModel>,
-    channelsList: List<SocialChannelModel>
+    channelsList: List<SocialChannelModel>,
+    onItemClicked: (SocialChannelModel) -> Unit
 ) {
     HorizontalPager(
         state = pagerState,
@@ -20,10 +21,18 @@ fun TabViewPager(
     ) { page ->
         when (page) {
             0 -> {
-                SocialChannelList(channelsList) {}
+                SocialChannelList(channelsList) { socialChannelModel ->
+                    onItemClicked(
+                        socialChannelModel
+                    )
+                }
             }
             1 -> {
-                SocialChannelList(socialsList) {}
+                SocialChannelList(socialsList) { socialChannelModel ->
+                    onItemClicked(
+                        socialChannelModel
+                    )
+                }
             }
         }
     }
