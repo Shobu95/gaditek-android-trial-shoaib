@@ -31,7 +31,7 @@ fun BodyDto.channelsAsDatabaseModel(): List<SocialChannelEntity> {
         SocialChannelEntity(
             name = it.name,
             url = it.url,
-            iconUrl = it.url,
+            iconUrl = it.icon,
             packageName = it.packageName,
             type = AppType.CHANNEL
         )
@@ -43,7 +43,7 @@ fun BodyDto.socialsAsDatabaseModel(): List<SocialChannelEntity> {
         SocialChannelEntity(
             name = it.name,
             url = it.url,
-            iconUrl = it.url,
+            iconUrl = it.icon,
             packageName = it.packageName,
             type = AppType.SOCIAL
         )
