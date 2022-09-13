@@ -1,7 +1,7 @@
 package com.example.gaditek_android_trial_shoaib.data.remote.dto
 
 import com.example.gaditek_android_trial_shoaib.data.local.entity.SocialChannelEntity
-import com.example.gaditek_android_trial_shoaib.domain.enum.AppType
+import com.example.gaditek_android_trial_shoaib.domain.enums.AppType
 import com.google.gson.annotations.SerializedName
 
 data class SocialChannelResponseDto(

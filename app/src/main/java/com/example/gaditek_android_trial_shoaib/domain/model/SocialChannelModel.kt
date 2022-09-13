@@ -1,6 +1,6 @@
 package com.example.gaditek_android_trial_shoaib.domain.model
 
-import com.example.gaditek_android_trial_shoaib.domain.enum.AppType
+import com.example.gaditek_android_trial_shoaib.domain.enums.AppType
 
 data class SocialChannelModel(
     var id: Int,

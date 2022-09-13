@@ -4,6 +4,6 @@ import com.example.gaditek_android_trial_shoaib.data.remote.dto.SocialChannelRes
 import retrofit2.http.GET
 
 interface SocialChannelService {
-    @GET("search/repositories?q=language=+sort:stars")
-    suspend fun getTrendingRepos(): SocialChannelResponseDto
+    @GET("staging/android/premium/channels-socials.json")
+    suspend fun getSocialChannels(): SocialChannelResponseDto
 }
