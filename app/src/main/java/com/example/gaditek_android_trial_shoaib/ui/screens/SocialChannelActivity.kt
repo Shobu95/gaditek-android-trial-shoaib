@@ -51,16 +51,18 @@ fun MainAppBody(viewModel: SocialChannelViewModel) {
         }
 
         if (viewModel.state.hasData) {
-            TabLayout(viewModel)
-        }
-
-        if (viewModel.state.hasError) {
-            ErrorView {
-                viewModel.onEvent(SocialChannelEvent.onReload)
+            TabLayout(
+                socialList = viewModel.state.socialsList,
+                channelList = viewModel.state.channelsList
+            ) { socialChannelModel ->
+                viewModel.onEvent(SocialChannelEvent.onItemClicked(socialChannelModel))
             }
         }
 
-    }
+        if (viewModel.state.hasError) {
+            ErrorView { viewModel.onEvent(SocialChannelEvent.onReload) }
+        }
 
+    }
 
 }
