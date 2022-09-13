@@ -4,12 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.gaditek_android_trial_shoaib.ui.screens.components.error_view.ErrorView
 import com.example.gaditek_android_trial_shoaib.ui.screens.components.tabs.TabLayout
+import com.example.gaditek_android_trial_shoaib.ui.screens.state_events.SocialChannelEvent
 import com.example.gaditek_android_trial_shoaib.ui.theme.GaditekandroidtrialshoaibTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,5 +43,24 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MainAppBody(viewModel: SocialChannelViewModel) {
-    TabLayout(viewModel)
+
+    Box(contentAlignment = Alignment.Center) {
+
+        if (viewModel.state.isLoading) {
+            CircularProgressIndicator()
+        }
+
+        if (viewModel.state.hasData) {
+            TabLayout(viewModel)
+        }
+
+        if (viewModel.state.hasError) {
+            ErrorView {
+                viewModel.onEvent(SocialChannelEvent.onReload)
+            }
+        }
+
+    }
+
+
 }
