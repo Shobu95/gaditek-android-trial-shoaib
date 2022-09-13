@@ -23,7 +23,7 @@ class SocialChannelViewModel
 @Inject constructor(
     @MyRepositoryImpl
     private val repository: SocialChannelRepository,
-    private val useCase: SocialChannelUseCase
+    private val actionUseCase: SocialChannelUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(SocialChannelState())
@@ -46,7 +46,7 @@ class SocialChannelViewModel
             }
 
             is SocialChannelEvent.onItemClicked -> {
-                useCase.invoke(event.socialChannelModel)
+                actionUseCase.invoke(event.socialChannelModel)
             }
         }
     }
