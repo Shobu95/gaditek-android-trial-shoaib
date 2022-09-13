@@ -1,4 +1,4 @@
-package com.example.gaditek_android_trial_shoaib.ui.screens.components
+package com.example.gaditek_android_trial_shoaib.ui.screens.components.tabs
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
