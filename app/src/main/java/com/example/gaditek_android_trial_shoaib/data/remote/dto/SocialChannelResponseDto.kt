@@ -1,5 +1,7 @@
 package com.example.gaditek_android_trial_shoaib.data.remote.dto
 
+import com.example.gaditek_android_trial_shoaib.data.local.entity.SocialChannelEntity
+import com.example.gaditek_android_trial_shoaib.domain.enum.AppType
 import com.google.gson.annotations.SerializedName
 
 data class SocialChannelResponseDto(
@@ -23,5 +25,27 @@ data class SocialChannelDto(
     @SerializedName("icon_url") val icon: String,
     @SerializedName("package_name_android") val packageName: String,
 )
+
+fun BodyDto.channelsAsDatabaseModel(): List<SocialChannelEntity> {
+    return channels.map {
+        SocialChannelEntity(
+            name = it.name,
+            iconUrl = it.url,
+            packageName = it.packageName,
+            type = AppType.CHANNEL
+        )
+    }
+}
+
+fun BodyDto.socialsAsDatabaseModel(): List<SocialChannelEntity> {
+    return socials.map {
+        SocialChannelEntity(
+            name = it.name,
+            iconUrl = it.url,
+            packageName = it.packageName,
+            type = AppType.SOCIAL
+        )
+    }
+}
 
 
