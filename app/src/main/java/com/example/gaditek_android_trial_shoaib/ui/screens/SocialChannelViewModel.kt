@@ -46,7 +46,7 @@ class SocialChannelViewModel
             }
 
             is SocialChannelEvent.onItemClicked -> {
-                actionUseCase.invoke(event.socialChannelModel)
+                actionUseCase(event.socialChannelModel)
             }
         }
     }
