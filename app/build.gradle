@@ -21,9 +21,26 @@ android {
         }
     }
 
-    buildTypes {
+    signingConfigs {
         release {
+            storeFile file("../gaditek_ks.jks")
+            storePassword "gaditek123"
+            keyAlias "gaditek"
+            keyPassword "gaditek123"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
             minifyEnabled false
+            shrinkResources false
+        }
+        release {
+            signingConfig signingConfigs.release
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
