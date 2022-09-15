@@ -20,7 +20,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class SocialChannelActivity : ComponentActivity() {
 
     private val viewModel by viewModels<SocialChannelViewModel>()
 
